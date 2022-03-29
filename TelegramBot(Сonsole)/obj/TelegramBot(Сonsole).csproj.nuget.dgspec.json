@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\TelegramBot(WinForms).csproj": {}
+    "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(Сonsole)\\TelegramBot(Сonsole).csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\TelegramBot(WinForms).csproj": {
+    "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(Сonsole)\\TelegramBot(Сonsole).csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\TelegramBot(WinForms).csproj",
-        "projectName": "TelegramBot(WinForms)",
-        "projectPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\TelegramBot(WinForms).csproj",
+        "projectUniqueName": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(Сonsole)\\TelegramBot(Сonsole).csproj",
+        "projectName": "TelegramBot(Сonsole)",
+        "projectPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(Сonsole)\\TelegramBot(Сonsole).csproj",
         "packagesPath": "C:\\Users\\Yana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\obj\\",
+        "outputPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(Сonsole)\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yana\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -58,9 +58,6 @@
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WindowsForms": {
-              "privateAssets": "none"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.103\\RuntimeIdentifierGraph.json"
