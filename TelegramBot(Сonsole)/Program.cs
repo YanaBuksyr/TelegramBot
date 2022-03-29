@@ -174,7 +174,7 @@ namespace TelegramBot_Сonsole_
 
                     foreach (var person in gameParticipants)
                     {
-                        if (person.chatId == chatId )//&& aTimer != 10)
+                        if (person.chatId == chatId && seconds != 10)
                         {
                             person.point++;
                         }
