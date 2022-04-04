@@ -33,13 +33,12 @@ namespace TelegramBot_WinForms_
             this.button = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // button
             // 
-            this.button.Location = new System.Drawing.Point(51, 380);
+            this.button.Location = new System.Drawing.Point(51, 349);
             this.button.Name = "button";
             this.button.Size = new System.Drawing.Size(393, 42);
             this.button.TabIndex = 0;
@@ -61,15 +60,6 @@ namespace TelegramBot_WinForms_
             // 
             this.timer.Interval = 1000;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 339);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "0";
-            // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
@@ -83,16 +73,14 @@ namespace TelegramBot_WinForms_
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 471);
+            this.ClientSize = new System.Drawing.Size(494, 413);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -101,7 +89,6 @@ namespace TelegramBot_WinForms_
         private System.Windows.Forms.Button button;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.Label label1;
         public System.Windows.Forms.ListBox listBox1;
     }
 }

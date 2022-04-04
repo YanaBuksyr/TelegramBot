@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace ClassLibrary
 {
-    public class GameEngine //: IGameEngine
+    public class GameEngine 
     {
         public TelegramBotClient bot;
         public IGameGUI gameGUI;
@@ -22,13 +22,13 @@ namespace ClassLibrary
         public int time;
         CancellationToken cancellationToken;
 
-        public delegate void PrintMessage(string mes);
+        public delegate void PrintMessage(string[] result);
         public event PrintMessage OnMessagePrint;
 
 
         public GameEngine(string token) {
             this.bot = new TelegramBotClient(token);
-           // this.gameGUI = gameGUI;
+           
         }
 
         public void StartBot()
@@ -165,7 +165,7 @@ namespace ClassLibrary
                 {
                     await bot.SendTextMessageAsync(chatId: obg.chatId, text: i.ToString(), cancellationToken: cancellationToken);
                 }
-                //Telegram.Bot.Types.Message MessageButton =
+                
                 await bot.SendTextMessageAsync(chatId: obg.chatId, text: note, replyMarkup: inlineKeyBoard);
 
             }
@@ -179,9 +179,9 @@ namespace ClassLibrary
 
         private async void  OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
-
-            string result = "";
-
+            string[] result = new string[gameParticipants.Count];
+           
+            string message = "Результат гри: ";
             if (time == 10)
             {
                 timer.Enabled = false;
@@ -189,10 +189,13 @@ namespace ClassLibrary
                 gameParticipants.Sort();
 
                 for (int i = 0; i < gameParticipants.Count; i++)
-                    result += "\n " + (i + 1) + ". " + gameParticipants[i].surname + " " + gameParticipants[i].name + " , кількість балів: " + gameParticipants[i].point;
-
+                {
+                    message += "\n " + (i + 1) + ". " + gameParticipants[i].surname + " " + gameParticipants[i].name + " , кількість балів: " + gameParticipants[i].point;
+                    result[i] = message;
+                    
+                }
                 foreach (var person in gameParticipants)
-                    await bot.SendTextMessageAsync(chatId: person.chatId, text: result);
+                    await bot.SendTextMessageAsync(chatId: person.chatId, text: message);
 
                 if (OnMessagePrint != null)
                     OnMessagePrint(result);
@@ -203,34 +206,6 @@ namespace ClassLibrary
 
             time++;
         }
-
-        //public string GameOver()
-        //{
-
-
-        //    string result = "";
-        //    timer.Enabled = false;
-        //    var listеPeople = gameParticipants.OrderBy(n => n.point);
-        //    int i = 1;
-        //    foreach (var person in gameParticipants)
-        //    {
-        //        result = "\n " + i.ToString() + ". " + person.surname + " " + person.name + " , кількість балів: " + person.point;
-        //        //if (gameParticipants.Count() == i)
-        //        //{
-        //        //foreach (var obg in gameParticipants)
-        //        //{
-        //        //    Telegram.Bot.Types.Message Message = await bot.SendTextMessageAsync(chatId: obg.chatId, text: result, cancellationToken: cancellationToken);
-
-        //        //}
-        //        //}
-        //        i++;
-        //    }
-
-        //    //gameGUI.PrintResult(result);
-        //    gameParticipants.Clear();
-        //    return result;
-
-        //}
 
         public class Person
         {

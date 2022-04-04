@@ -35,34 +35,10 @@ namespace TelegramBot_WinForms_
             
         }
 
-        //public void PrintResult(string result)
-        //{
-        //    //string result = "hello";
-        //    listBox1.Items.Add(result);
-
-        //}
-
-        //public class WinFormsGui : IGameGUI
-        //{
-
-        //    public ListBox listBox1;
-        //    public WinFormsGui(ListBox listBox1)
-        //    {
-        //        this.listBox1 = listBox1;
-        //    }
-
-        //    public void PrintResult(string result)
-        //    {
-
-        //        listBox1.Items.Add(result);
-
-        //    }
-        //}
-        
-
+     
         private void Form1_Load(object sender, EventArgs e)
         {
-            //WinFormsGui winFormsGui = new WinFormsGui(listBox1);
+            
             GameEngineWinForm = new GameEngine("5027258622:AAHruPQHbExVgHS_N_QV4sDc1KkJsxw5yzY");
             GameEngineWinForm.OnMessagePrint += OnMessagePrint;
             GameEngineWinForm.StartBot();
@@ -70,10 +46,18 @@ namespace TelegramBot_WinForms_
         }
 
        
-        private static void OnMessagePrint(string mes)
+        private  void OnMessagePrint(string[] result)
         {
-           
-            listBox1.Items.Add(mes);
+
+            Invoke(new Action(() =>
+            {
+
+              
+                listBox1.Items.Clear();
+                foreach(var message in result)
+                listBox1.Items.Add(message);
+
+            }));
         }
 
         private void  button_Click(object sender, EventArgs e)
@@ -86,8 +70,8 @@ namespace TelegramBot_WinForms_
 
         private void button2_Click(object sender, EventArgs e)
         {
-           label1.Text = "0";
-            listBox1.Items.Clear();
+           
+           listBox1.Items.Clear();
            listBox1.Items.Add(GameEngineWinForm.GetlistParticipants());
         
         }

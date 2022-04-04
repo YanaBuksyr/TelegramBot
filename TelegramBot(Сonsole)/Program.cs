@@ -43,9 +43,11 @@ namespace TelegramBot_Сonsole_
             Console.ReadLine();
         }
 
-        private static void OnMessagePrint(string mes)
+        private static void OnMessagePrint(string[] result)
         {
-            Console.WriteLine(mes);
+            
+            foreach (var message in result)
+                Console.WriteLine(message);
         }
 
         
