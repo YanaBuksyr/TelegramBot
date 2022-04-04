@@ -30,53 +30,53 @@ namespace TelegramBot_WinForms_
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.StartGame = new System.Windows.Forms.Button();
+            this.GetlistParticipants = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listParticipants = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // button
+            // StartGame
             // 
-            this.button.Location = new System.Drawing.Point(51, 349);
-            this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(393, 42);
-            this.button.TabIndex = 0;
-            this.button.Text = "start";
-            this.button.UseVisualStyleBackColor = true;
-            this.button.Click += new System.EventHandler(this.button_Click);
+            this.StartGame.Location = new System.Drawing.Point(51, 349);
+            this.StartGame.Name = "StartGame";
+            this.StartGame.Size = new System.Drawing.Size(393, 42);
+            this.StartGame.TabIndex = 0;
+            this.StartGame.Text = "start";
+            this.StartGame.UseVisualStyleBackColor = true;
+            this.StartGame.Click += new System.EventHandler(this.StartGame_Click);
             // 
-            // button2
+            // GetlistParticipants
             // 
-            this.button2.Location = new System.Drawing.Point(51, 54);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(393, 42);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "get game participants";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.GetlistParticipants.Location = new System.Drawing.Point(51, 54);
+            this.GetlistParticipants.Name = "GetlistParticipants";
+            this.GetlistParticipants.Size = new System.Drawing.Size(393, 42);
+            this.GetlistParticipants.TabIndex = 5;
+            this.GetlistParticipants.Text = "get game participants";
+            this.GetlistParticipants.UseVisualStyleBackColor = true;
+            this.GetlistParticipants.Click += new System.EventHandler(this.GetlistParticipants_Click);
             // 
             // timer
             // 
             this.timer.Interval = 1000;
             // 
-            // listBox1
+            // listParticipants
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(51, 126);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(393, 184);
-            this.listBox1.TabIndex = 7;
+            this.listParticipants.FormattingEnabled = true;
+            this.listParticipants.ItemHeight = 20;
+            this.listParticipants.Location = new System.Drawing.Point(51, 126);
+            this.listParticipants.Name = "listParticipants";
+            this.listParticipants.Size = new System.Drawing.Size(393, 184);
+            this.listParticipants.TabIndex = 7;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(494, 413);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button);
+            this.Controls.Add(this.listParticipants);
+            this.Controls.Add(this.GetlistParticipants);
+            this.Controls.Add(this.StartGame);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -86,10 +86,10 @@ namespace TelegramBot_WinForms_
 
         #endregion
 
-        private System.Windows.Forms.Button button;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button StartGame;
+        private System.Windows.Forms.Button GetlistParticipants;
         private System.Windows.Forms.Timer timer;
-        public System.Windows.Forms.ListBox listBox1;
+        public System.Windows.Forms.ListBox listParticipants;
     }
 }
 

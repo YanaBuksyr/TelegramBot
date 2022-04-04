@@ -22,13 +22,11 @@ namespace ClassLibrary
         public int time;
         CancellationToken cancellationToken;
 
-        public delegate void PrintMessage(string[] result);
-        public event PrintMessage OnMessagePrint;
-
+        public delegate void PrintResult(string[] result);
+        public event PrintResult OnPrintResult;
 
         public GameEngine(string token) {
-            this.bot = new TelegramBotClient(token);
-           
+            this.bot = new TelegramBotClient(token);   
         }
 
         public void StartBot()
@@ -50,12 +48,10 @@ namespace ClassLibrary
         public string GetlistParticipants() 
         {
             string listParticipant = "";
-            int i = 1;
-            foreach (var person in gameParticipants)
-            {
-                listParticipant = "\n " + i.ToString() + ". " + person.surname + " " + person.name;
-                i++;
-            }
+            
+            for (int i = 0; i < gameParticipants.Count; i++)
+            listParticipant += "\n " + i+1.ToString() + ". " + gameParticipants[i].surname + " " + gameParticipants[i].name;
+
             return listParticipant;
         }
 
@@ -68,35 +64,30 @@ namespace ClassLibrary
                 {
                     chatId = update.Message.Chat.Id;
                     var messageText = update.Message.Text;
-
-                    switch (messageText)
-                    {
-                        case "/start":
-                            string answer = "Ви хочете зіграти гру?";
-                            var inlineKeyBoard = new InlineKeyboardMarkup(new[]
+                    
+                    if (messageText == "/start") 
+                    { 
+                        string answer = "Ви хочете зіграти гру?";
+                        var inlineKeyBoard = new InlineKeyboardMarkup( new[]
+                        {
+                            new[]
                             {
-                                new[]
-                                    {
-                                        InlineKeyboardButton.WithCallbackData("Так"),
-                                        InlineKeyboardButton.WithCallbackData("Ні")
-                                    }
-                             });
+                                InlineKeyboardButton.WithCallbackData("Так"),
+                                InlineKeyboardButton.WithCallbackData("Ні")
+                             }
+                         });
 
-                             await bot.SendTextMessageAsync(chatId: chatId, text: answer, replyMarkup: inlineKeyBoard);
-
-                            break;
-
-                        default:
-                            break;
+                         await bot.SendTextMessageAsync(chatId: chatId, text: answer, replyMarkup: inlineKeyBoard);      
                     }
                 }
             }
             else if (update.Type == UpdateType.CallbackQuery)
+                
                 if (update.CallbackQuery.Data.ToString() == "Так")
                 {
                     string name = update.CallbackQuery.Message.Chat.FirstName;
                     string surname = update.CallbackQuery.Message.Chat.LastName;
-                    long chstId = update.CallbackQuery.Message.Chat.Id;
+                    chatId = update.CallbackQuery.Message.Chat.Id;
                     bool personRegistered = false;
 
                     foreach (var person in gameParticipants)
@@ -106,9 +97,10 @@ namespace ClassLibrary
                             personRegistered = true;
                         }
                     }
+
                     if (personRegistered == false)
                     {
-                        gameParticipants.Add(new Person(name, surname, chstId, 0));
+                        gameParticipants.Add(new Person(name, surname, chatId, 0));
                         await bot.SendTextMessageAsync(chatId: chatId, text: "Вам прийде сповіщення про початок гри!", cancellationToken: cancellationToken);
 
                     }
@@ -147,24 +139,20 @@ namespace ClassLibrary
 
         public async void SendGameStartNotification() 
         {
-           
-
             string note = "Жми кнопку протягом 10 с.";
             var inlineKeyBoard = new InlineKeyboardMarkup(new[]
             {
-                    new[]{
-                        InlineKeyboardButton.WithCallbackData("Тисни")
-                     }
-                 });
+                new[]{
+                    InlineKeyboardButton.WithCallbackData("Тисни")
+                }
+            });
 
             foreach (Person obg in gameParticipants)
             {
-
                 await bot.SendTextMessageAsync(chatId: obg.chatId, text: "Гра почнеться через:", cancellationToken: cancellationToken);
+                
                 for (int i = 3; i != 0; --i)
-                {
-                    await bot.SendTextMessageAsync(chatId: obg.chatId, text: i.ToString(), cancellationToken: cancellationToken);
-                }
+                await bot.SendTextMessageAsync(chatId: obg.chatId, text: i.ToString(), cancellationToken: cancellationToken);
                 
                 await bot.SendTextMessageAsync(chatId: obg.chatId, text: note, replyMarkup: inlineKeyBoard);
 
@@ -186,7 +174,7 @@ namespace ClassLibrary
             {
                 timer.Enabled = false;
 
-                gameParticipants.Sort();
+                gameParticipants.OrderBy(n => n.point); ;
 
                 for (int i = 0; i < gameParticipants.Count; i++)
                 {
@@ -195,10 +183,10 @@ namespace ClassLibrary
                     
                 }
                 foreach (var person in gameParticipants)
-                    await bot.SendTextMessageAsync(chatId: person.chatId, text: message);
+                await bot.SendTextMessageAsync(chatId: person.chatId, text: message);
 
-                if (OnMessagePrint != null)
-                    OnMessagePrint(result);
+                if (OnPrintResult != null)
+                    OnPrintResult(result);
 
                 gameParticipants.Clear();
                 return;
@@ -209,7 +197,6 @@ namespace ClassLibrary
 
         public class Person
         {
-
             public string name;
             public string surname;
             public long chatId;
@@ -224,7 +211,6 @@ namespace ClassLibrary
                 this.point = point;
             }
         }
-        
         
     }
 }

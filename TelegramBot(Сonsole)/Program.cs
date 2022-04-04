@@ -20,37 +20,42 @@ namespace TelegramBot_Сonsole_
         {
            
             ClassLibrary.GameEngine GameEngineConsole = new GameEngine("5027258622:AAHruPQHbExVgHS_N_QV4sDc1KkJsxw5yzY");
-            GameEngineConsole.OnMessagePrint += OnMessagePrint;
-
+            GameEngineConsole.OnPrintResult += OnPrintResult;
             GameEngineConsole.StartBot();
+            string answer;
 
-            Console.WriteLine("Для того щоб отримати список учасників гри натисніть 1");
-            int answer = int.Parse(Console.ReadLine());
-            if (answer == 1)
+            Console.WriteLine("Для того щоб отримати список учасників гри введіть 'get'");
+            answer = Console.ReadLine();
+
+            if (answer == "get")
             {
-               
                 Console.WriteLine(GameEngineConsole.GetlistParticipants());
+            }
+            else
+            {
+                Console.WriteLine("Програма не зрозуміла вас!");
             }
 
             Console.WriteLine("Для того щоб почати гру введіть 'start'");
-            string startGame = Console.ReadLine();
-            if (startGame == "start")
+            answer = Console.ReadLine();
+           
+            if (answer == "start")
             {
                 GameEngineConsole.SendGameStartNotification();
-
+            }
+            else
+            {
+                Console.WriteLine("Програма не зрозуміла вас!");
             }
 
             Console.ReadLine();
         }
 
-        private static void OnMessagePrint(string[] result)
-        {
-            
+        private static void OnPrintResult(string[] result)
+        {  
             foreach (var message in result)
-                Console.WriteLine(message);
-        }
-
-        
+            Console.WriteLine(message);
+        }     
 
     }
 }

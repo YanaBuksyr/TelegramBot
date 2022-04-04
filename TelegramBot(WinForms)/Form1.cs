@@ -30,55 +30,38 @@ namespace TelegramBot_WinForms_
 
         public Form1()
         {
-
-            InitializeComponent();  
-            
+            InitializeComponent();     
         }
 
-     
         private void Form1_Load(object sender, EventArgs e)
         {
-            
             GameEngineWinForm = new GameEngine("5027258622:AAHruPQHbExVgHS_N_QV4sDc1KkJsxw5yzY");
-            GameEngineWinForm.OnMessagePrint += OnMessagePrint;
-            GameEngineWinForm.StartBot();
-            
+            GameEngineWinForm.OnPrintResult += OnPrintResult;
+            GameEngineWinForm.StartBot();  
         }
 
-       
-        private  void OnMessagePrint(string[] result)
+        private void GetlistParticipants_Click(object sender, EventArgs e)
         {
+            listParticipants.Items.Clear();
+            listParticipants.Items.Add(GameEngineWinForm.GetlistParticipants());
+        }
 
+        private void StartGame_Click(object sender, EventArgs e)
+        {
+            GameEngineWinForm.SendGameStartNotification();
+        }
+
+        private  void OnPrintResult(string[] result)
+        {
             Invoke(new Action(() =>
             {
-
-              
-                listBox1.Items.Clear();
+                listParticipants.Items.Clear();
                 foreach(var message in result)
-                listBox1.Items.Add(message);
+                listParticipants.Items.Add(message);
 
             }));
         }
 
-        private void  button_Click(object sender, EventArgs e)
-        {
-
-            GameEngineWinForm.SendGameStartNotification();
-          
-        }
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-           
-           listBox1.Items.Clear();
-           listBox1.Items.Add(GameEngineWinForm.GetlistParticipants());
-        
-        }
-
-       
-
-        
     }
 }
 
