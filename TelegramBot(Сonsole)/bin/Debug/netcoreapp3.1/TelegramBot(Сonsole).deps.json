@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "TelegramBot(Сonsole)/1.0.0": {
         "dependencies": {
+          "ClassLibrary": "1.0.0",
           "Telegram.Bot.Extensions.Polling": "1.0.2"
         },
         "runtime": {
@@ -52,6 +53,14 @@
             "fileVersion": "1.0.2.0"
           }
         }
+      },
+      "ClassLibrary/1.0.0": {
+        "dependencies": {
+          "Telegram.Bot.Extensions.Polling": "1.0.2"
+        },
+        "runtime": {
+          "ClassLibrary.dll": {}
+        }
       }
     }
   },
@@ -88,6 +97,11 @@
       "sha512": "sha512-WWldKCidTlr7Nu2JhyriU9ApB/zyCKCezKoru7P9GRyjVacciLcgYihHI0fU62CUPhqyWlP7EqV8YJ4zAIWFmQ==",
       "path": "telegram.bot.extensions.polling/1.0.2",
       "hashPath": "telegram.bot.extensions.polling.1.0.2.nupkg.sha512"
+    },
+    "ClassLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

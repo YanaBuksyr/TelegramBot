@@ -47,6 +47,19 @@
         "runtime": {
           "lib/netcoreapp3.1/Telegram.Bot.Extensions.Polling.dll": {}
         }
+      },
+      "ClassLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Telegram.Bot.Extensions.Polling": "1.0.2"
+        },
+        "compile": {
+          "bin/placeholder/ClassLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassLibrary.dll": {}
+        }
       }
     }
   },
@@ -143,10 +156,16 @@
         "telegram.bot.extensions.polling.1.0.2.nupkg.sha512",
         "telegram.bot.extensions.polling.nuspec"
       ]
+    },
+    "ClassLibrary/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary/ClassLibrary.csproj",
+      "msbuildProject": "../ClassLibrary/ClassLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "ClassLibrary >= 1.0.0",
       "Telegram.Bot.Extensions.Polling >= 1.0.2"
     ]
   },
@@ -176,7 +195,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\ClassLibrary.csproj": {
+              "projectPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\ClassLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

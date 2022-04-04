@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "2/kqbmMCnagu5JGnHLzYosF+WB2rbYF4zPHiYQa0DHborYdJDeGaJaRW5aAq+hUovwm+JD9e5S4V1n+KKehfdw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\ClassLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Yana\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\Yana\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
+    "C:\\Users\\Yana\\.nuget\\packages\\telegram.bot\\17.0.0\\telegram.bot.17.0.0.nupkg.sha512",
+    "C:\\Users\\Yana\\.nuget\\packages\\telegram.bot.extensions.polling\\1.0.2\\telegram.bot.extensions.polling.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

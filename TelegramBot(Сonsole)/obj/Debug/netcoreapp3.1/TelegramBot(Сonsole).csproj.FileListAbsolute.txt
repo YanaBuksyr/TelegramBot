@@ -17,3 +17,5 @@ C:\Users\Yana\Documents\GitHub\TelegramBot\TelegramBot(Сonsole)\obj\Debug\netco
 C:\Users\Yana\Documents\GitHub\TelegramBot\TelegramBot(Сonsole)\obj\Debug\netcoreapp3.1\TelegramBot(Сonsole).dll
 C:\Users\Yana\Documents\GitHub\TelegramBot\TelegramBot(Сonsole)\obj\Debug\netcoreapp3.1\TelegramBot(Сonsole).pdb
 C:\Users\Yana\Documents\GitHub\TelegramBot\TelegramBot(Сonsole)\obj\Debug\netcoreapp3.1\TelegramBot(Сonsole).genruntimeconfig.cache
+C:\Users\Yana\Documents\GitHub\TelegramBot\TelegramBot(Сonsole)\bin\Debug\netcoreapp3.1\ClassLibrary.dll
+C:\Users\Yana\Documents\GitHub\TelegramBot\TelegramBot(Сonsole)\bin\Debug\netcoreapp3.1\ClassLibrary.pdb
