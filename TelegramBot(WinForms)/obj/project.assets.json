@@ -48,17 +48,28 @@
           "lib/netcoreapp3.1/Telegram.Bot.Extensions.Polling.dll": {}
         }
       },
-      "ClassLibrary/1.0.0": {
+      "Engine/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Telegram.Bot.Extensions.Polling": "1.0.2"
+          "Telegram.Bot.Extensions.Polling": "1.0.2",
+          "Сommon": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/ClassLibrary.dll": {}
+          "bin/placeholder/Engine.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ClassLibrary.dll": {}
+          "bin/placeholder/Engine.dll": {}
+        }
+      },
+      "Сommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Сommon.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Сommon.dll": {}
         }
       }
     }
@@ -157,15 +168,20 @@
         "telegram.bot.extensions.polling.nuspec"
       ]
     },
-    "ClassLibrary/1.0.0": {
+    "Engine/1.0.0": {
       "type": "project",
-      "path": "../ClassLibrary/ClassLibrary.csproj",
-      "msbuildProject": "../ClassLibrary/ClassLibrary.csproj"
+      "path": "../ClassLibrary/Engine.csproj",
+      "msbuildProject": "../ClassLibrary/Engine.csproj"
+    },
+    "Сommon/1.0.0": {
+      "type": "project",
+      "path": "../Сommon/Сommon.csproj",
+      "msbuildProject": "../Сommon/Сommon.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "ClassLibrary >= 1.0.0",
+      "Engine >= 1.0.0",
       "Telegram.Bot.Extensions.Polling >= 1.0.2"
     ]
   },
@@ -175,9 +191,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\TelegramBot(WinForms).csproj",
-      "projectName": "TelegramBot(WinForms)",
-      "projectPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\TelegramBot(WinForms).csproj",
+      "projectUniqueName": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\WinForms.csproj",
+      "projectName": "WinForms",
+      "projectPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\WinForms.csproj",
       "packagesPath": "C:\\Users\\Yana\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\obj\\",
       "projectStyle": "PackageReference",
@@ -196,8 +212,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\ClassLibrary.csproj": {
-              "projectPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\ClassLibrary.csproj"
+            "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\Engine.csproj": {
+              "projectPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\Engine.csproj"
             }
           }
         }

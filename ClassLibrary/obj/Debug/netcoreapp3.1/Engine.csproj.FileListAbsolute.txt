@@ -1,0 +1,13 @@
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\bin\Debug\netcoreapp3.1\Engine.deps.json
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\bin\Debug\netcoreapp3.1\Engine.dll
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\bin\Debug\netcoreapp3.1\Engine.pdb
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\bin\Debug\netcoreapp3.1\Сommon.dll
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\bin\Debug\netcoreapp3.1\Сommon.pdb
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\obj\Debug\netcoreapp3.1\Engine.csproj.AssemblyReference.cache
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\obj\Debug\netcoreapp3.1\Engine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\obj\Debug\netcoreapp3.1\Engine.AssemblyInfoInputs.cache
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\obj\Debug\netcoreapp3.1\Engine.AssemblyInfo.cs
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\obj\Debug\netcoreapp3.1\Engine.csproj.CoreCompileInputs.cache
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\obj\Debug\netcoreapp3.1\Engine.csproj.CopyComplete
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\obj\Debug\netcoreapp3.1\Engine.dll
+C:\Users\Yana\Documents\GitHub\TelegramBot\ClassLibrary\obj\Debug\netcoreapp3.1\Engine.pdb

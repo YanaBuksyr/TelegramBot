@@ -9,26 +9,28 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
+using Engine;
+using System.Text;
 
 namespace ClassLibrary
 {
     public class GameEngine 
     {
-        public TelegramBotClient bot;
-        public IGameGUI gameGUI;
-        public List<Person> gameParticipants = new List<Person>();
-        public long chatId;
-        public System.Timers.Timer timer;
-        public int time;
+        private TelegramBotClient _bot;
+        //private IGameGUI gameGUI;
+        private List<Person> _gameParticipants = new List<Person>();
+        private long _chatId;
+        private System.Timers.Timer _timer;
+        private int _time;
         CancellationToken cancellationToken;
 
         public delegate void PrintResult(string[] result);
         public event PrintResult OnPrintResult;
 
         public GameEngine(string token) {
-            this.bot = new TelegramBotClient(token);   
+            _bot = new TelegramBotClient(token);   
         }
-
+        
         public void StartBot()
         {
             using var cts = new CancellationTokenSource();
@@ -38,7 +40,7 @@ namespace ClassLibrary
                 AllowedUpdates = { }
             };
 
-            bot.StartReceiving(
+            _bot.StartReceiving(
             HandleUpdateAsync,
             HandleErrorAsync,
             receiverOptions,
@@ -48,9 +50,18 @@ namespace ClassLibrary
         public string GetlistParticipants() 
         {
             string listParticipant = "";
-            
-            for (int i = 0; i < gameParticipants.Count; i++)
-            listParticipant += "\n " + i+1.ToString() + ". " + gameParticipants[i].surname + " " + gameParticipants[i].name;
+            var number = new StringBuilder();
+
+            for (int i = 0; i < _gameParticipants.Count; i++)
+            {
+                number.Clear();
+                listParticipant += "\n " + number.Insert(0, i + 1) + ". " + _gameParticipants[i].Surname + " " + _gameParticipants[i].Name;
+            }
+
+            if (_gameParticipants.Count == 0)
+            {
+                listParticipant = "Ще немає жодного гравця!";
+            }
 
             return listParticipant;
         }
@@ -62,7 +73,7 @@ namespace ClassLibrary
             {
                 if (update.Message!.Type == MessageType.Text)
                 {
-                    chatId = update.Message.Chat.Id;
+                    _chatId = update.Message.Chat.Id;
                     var messageText = update.Message.Text;
                     
                     if (messageText == "/start") 
@@ -77,7 +88,7 @@ namespace ClassLibrary
                              }
                          });
 
-                         await bot.SendTextMessageAsync(chatId: chatId, text: answer, replyMarkup: inlineKeyBoard);      
+                         await _bot.SendTextMessageAsync(chatId: _chatId, text: answer, replyMarkup: inlineKeyBoard);      
                     }
                 }
             }
@@ -87,12 +98,12 @@ namespace ClassLibrary
                 {
                     string name = update.CallbackQuery.Message.Chat.FirstName;
                     string surname = update.CallbackQuery.Message.Chat.LastName;
-                    chatId = update.CallbackQuery.Message.Chat.Id;
+                    _chatId = update.CallbackQuery.Message.Chat.Id;
                     bool personRegistered = false;
 
-                    foreach (var person in gameParticipants)
+                    foreach (var person in _gameParticipants)
                     {
-                        if (person.chatId == chatId)
+                        if (person.ChatId == _chatId)
                         {
                             personRegistered = true;
                         }
@@ -100,8 +111,8 @@ namespace ClassLibrary
 
                     if (personRegistered == false)
                     {
-                        gameParticipants.Add(new Person(name, surname, chatId, 0));
-                        await bot.SendTextMessageAsync(chatId: chatId, text: "Вам прийде сповіщення про початок гри!", cancellationToken: cancellationToken);
+                        _gameParticipants.Add(new Person(name, surname, _chatId, 0));
+                        await _bot.SendTextMessageAsync(chatId: _chatId, text: "Вам прийде сповіщення про початок гри!", cancellationToken: cancellationToken);
 
                     }
 
@@ -109,13 +120,13 @@ namespace ClassLibrary
 
                 else if (update.CallbackQuery.Data.ToString() == "Тисни")
                 {
-                    chatId = update.CallbackQuery.Message.Chat.Id;
+                    _chatId = update.CallbackQuery.Message.Chat.Id;
 
-                    foreach (var person in gameParticipants)
+                    foreach (var person in _gameParticipants)
                     {
-                        if (person.chatId == chatId && time != 10)
+                        if (person.ChatId == _chatId && _time != 10)
                         {
-                            person.point++;
+                            person.Point++;
                         }
                     }
                 }
@@ -125,7 +136,7 @@ namespace ClassLibrary
                 }
         }
 
-        public static Task HandleErrorAsync(ITelegramBotClient bot, Exception exception, CancellationToken cancellationToken)
+        public Task HandleErrorAsync(ITelegramBotClient bot, Exception exception, CancellationToken cancellationToken)
         {
             var ErrorMessage = exception switch
             {
@@ -137,7 +148,7 @@ namespace ClassLibrary
             return Task.CompletedTask;
         }
 
-        public async void SendGameStartNotification() 
+        public async Task SendGameStartNotification() 
         {
             string note = "Жми кнопку протягом 10 с.";
             var inlineKeyBoard = new InlineKeyboardMarkup(new[]
@@ -147,71 +158,57 @@ namespace ClassLibrary
                 }
             });
 
-            foreach (Person obg in gameParticipants)
+            foreach (Person obg in _gameParticipants)
             {
-                await bot.SendTextMessageAsync(chatId: obg.chatId, text: "Гра почнеться через:", cancellationToken: cancellationToken);
+                await _bot.SendTextMessageAsync(chatId: obg.ChatId, text: "Гра почнеться через:", cancellationToken: cancellationToken);
                 
                 for (int i = 3; i != 0; --i)
-                await bot.SendTextMessageAsync(chatId: obg.chatId, text: i.ToString(), cancellationToken: cancellationToken);
+                await _bot.SendTextMessageAsync(chatId: obg.ChatId, text: i.ToString(), cancellationToken: cancellationToken);
                 
-                await bot.SendTextMessageAsync(chatId: obg.chatId, text: note, replyMarkup: inlineKeyBoard);
+                await _bot.SendTextMessageAsync(chatId: obg.ChatId, text: note, replyMarkup: inlineKeyBoard);
 
             }
             
-            timer = new System.Timers.Timer();
-            timer.Interval = 1000;
-            timer.Elapsed += OnTimedEvent;
-            timer.AutoReset = true;
-            timer.Enabled = true;
+            _timer = new System.Timers.Timer();
+            _timer.Interval = 1000;
+            _timer.Elapsed += OnTimedEvent;
+            _timer.AutoReset = true;
+            _timer.Enabled = true;
+            
         }
 
         private async void  OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
-            string[] result = new string[gameParticipants.Count];
+            string[] result = new string[_gameParticipants.Count];
            
             string message = "Результат гри: ";
-            if (time == 10)
+            if (_time == 10)
             {
-                timer.Enabled = false;
+                _timer.Enabled = false;
 
-                gameParticipants.OrderBy(n => n.point); ;
+                _gameParticipants.OrderBy(n => n.Point); ;
 
-                for (int i = 0; i < gameParticipants.Count; i++)
+                for (int i = 0; i < _gameParticipants.Count; i++)
                 {
-                    message += "\n " + (i + 1) + ". " + gameParticipants[i].surname + " " + gameParticipants[i].name + " , кількість балів: " + gameParticipants[i].point;
+                    message += "\n " + (i + 1) + ". " + _gameParticipants[i].Surname + " " + _gameParticipants[i].Name + " , кількість балів: " + _gameParticipants[i].Point;
                     result[i] = message;
                     
                 }
-                foreach (var person in gameParticipants)
-                await bot.SendTextMessageAsync(chatId: person.chatId, text: message);
+                foreach (var person in _gameParticipants)
+                await _bot.SendTextMessageAsync(chatId: person.ChatId, text: message);
 
                 if (OnPrintResult != null)
                     OnPrintResult(result);
 
-                gameParticipants.Clear();
+                _gameParticipants.Clear();
                 return;
             }
 
-            time++;
+            _time++;
         }
 
-        public class Person
-        {
-            public string name;
-            public string surname;
-            public long chatId;
-            public int point;
-
-
-            public Person(string name, string surname, long chatId, int point)
-            {
-                this.name = name;
-                this.surname = surname;
-                this.chatId = chatId;
-                this.point = point;
-            }
-        }
         
+
     }
 }
 

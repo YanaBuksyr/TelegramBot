@@ -47,6 +47,16 @@
         "runtime": {
           "lib/netcoreapp3.1/Telegram.Bot.Extensions.Polling.dll": {}
         }
+      },
+      "Сommon/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Сommon.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Сommon.dll": {}
+        }
       }
     }
   },
@@ -143,11 +153,17 @@
         "telegram.bot.extensions.polling.1.0.2.nupkg.sha512",
         "telegram.bot.extensions.polling.nuspec"
       ]
+    },
+    "Сommon/1.0.0": {
+      "type": "project",
+      "path": "../Сommon/Сommon.csproj",
+      "msbuildProject": "../Сommon/Сommon.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Telegram.Bot.Extensions.Polling >= 1.0.2"
+      "Telegram.Bot.Extensions.Polling >= 1.0.2",
+      "Сommon >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -156,9 +172,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\ClassLibrary.csproj",
-      "projectName": "ClassLibrary",
-      "projectPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\ClassLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\Engine.csproj",
+      "projectName": "Engine",
+      "projectPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\Engine.csproj",
       "packagesPath": "C:\\Users\\Yana\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\obj\\",
       "projectStyle": "PackageReference",
@@ -176,7 +192,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\Сommon\\Сommon.csproj": {
+              "projectPath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\Сommon\\Сommon.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

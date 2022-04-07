@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2/kqbmMCnagu5JGnHLzYosF+WB2rbYF4zPHiYQa0DHborYdJDeGaJaRW5aAq+hUovwm+JD9e5S4V1n+KKehfdw==",
+  "dgSpecHash": "hRSX29GfEJMSeApL5+WdXMIdVi3NrKOuoniTD6UBeLjnWVYYj+n2me1jl+GRecZfBvs8NX6tulDMys017AKWXQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\ClassLibrary.csproj",
+  "projectFilePath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\ClassLibrary\\Engine.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yana\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Users\\Yana\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",

@@ -48,7 +48,7 @@ namespace TelegramBot_WinForms_
 
         private void StartGame_Click(object sender, EventArgs e)
         {
-            GameEngineWinForm.SendGameStartNotification();
+            GameEngineWinForm.SendGameStartNotification().Wait();
         }
 
         private  void OnPrintResult(string[] result)

@@ -41,7 +41,7 @@ namespace TelegramBot_Сonsole_
            
             if (answer == "start")
             {
-                GameEngineConsole.SendGameStartNotification();
+               GameEngineConsole.SendGameStartNotification().Wait();
             }
             else
             {

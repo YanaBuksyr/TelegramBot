@@ -5,9 +5,6 @@ using System.Text;
 
     public interface IGameGUI
     {
-     
-        
-        //void StartGame();
         void PrintResult(string result);
     }
 

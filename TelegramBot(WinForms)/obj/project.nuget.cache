@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LWuUOdqjffMInNw0+NM/gJDSbaaxvAPDFdbHTpiGyYtabXhaxEpBP+yD1hDIr2pzhb+6PIMAmtQIHXdXcSM5WQ==",
+  "dgSpecHash": "NUOPXlXBjrMTV1LyNy5wx6eWL2d0glY/0ob8BCSJanhKXwc/DNrvGZhoE86Y4VHicJASSuuS348ssjiIgzhwUw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\TelegramBot(WinForms).csproj",
+  "projectFilePath": "C:\\Users\\Yana\\Documents\\GitHub\\TelegramBot\\TelegramBot(WinForms)\\WinForms.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yana\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Users\\Yana\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
